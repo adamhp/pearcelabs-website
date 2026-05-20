@@ -1,15 +1,68 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
 
 const {
-  title = 'Pearce Labs',
-  description = 'Senior-level digital services for small businesses in Falls Church, VA and the DC metro area.',
+  title = "Pearce Labs | Senior Digital Services Falls Church VA",
+  description = "Senior-level digital services for small businesses in Falls Church, VA and the DC metro area. Software development, AI implementation, data engineering, web design, and technology consulting.",
+  image = "/og-image.png",
 } = Astro.props;
+
+const siteUrl = "https://pearcelabs.com";
+const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+const ogImage = new URL(image, siteUrl).toString();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Pearce Labs",
+  description:
+    "Senior-level digital services for small businesses in Falls Church, VA and the DC metro area.",
+  url: siteUrl,
+  email: "hello@pearcelabs.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Falls Church",
+    addressRegion: "VA",
+    addressCountry: "US",
+  },
+  areaServed: ["Falls Church VA", "DC Metro Area"],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Digital Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Software Development" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "AI Implementation" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Data Engineering & Visualization",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Web Development" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Technology Consulting" },
+      },
+    ],
+  },
+  foundingDate: "2025",
+};
 ---
 
 <!doctype html>
@@ -17,16 +70,46 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#F5F0E8" />
+
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pearce Labs" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,700;0,900;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
-  <body class="bg-paper text-ink font-body antialiased max-w-5xl mx-auto">
+  <body class="mx-auto max-w-5xl bg-paper font-body text-ink antialiased">
     <slot />
   </body>
 </html>

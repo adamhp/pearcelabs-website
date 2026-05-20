@@ -36,6 +36,7 @@
     transition: background 0.2s, border-color 0.2s, color 0.2s;
   }
   .btn:hover { background: var(--color-accent); border-color: var(--color-accent); }
+  .btn--sent { background: #2A5C2A; border-color: #2A5C2A; pointer-events: none; }
   .btn .arr { display: inline-block; transition: transform 0.2s; }
   .btn:hover .arr { transform: translateX(3px); }
 }
