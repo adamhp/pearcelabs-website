@@ -24,12 +24,19 @@ const jsonLd = {
   description:
     "Digital services for small businesses in Falls Church, VA and the DC metro area.",
   url: siteUrl,
+  telephone: "+15717868962",
   email: "hello@pearcelabs.com",
+  priceRange: "$$",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Falls Church",
     addressRegion: "VA",
     addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 38.8829,
+    longitude: -77.1711,
   },
   areaServed: ["Falls Church VA", "DC Metro Area"],
   hasOfferCatalog: {
@@ -75,6 +82,7 @@ const jsonLd = {
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
 
     <!-- Icons -->
@@ -106,9 +114,17 @@ const jsonLd = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,700;0,900;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,700;0,900;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      />
+    </noscript>
 
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
