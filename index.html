@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pearce Labs — Senior-level digital services for small businesses in Falls Church, VA and the DC metro area.">
+  <title>Pearce Labs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Schibsted+Grotesk:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:     #0C0C0A;
+      --paper:   #F7F6F2;
+      --accent:  #C0392B;
+      --muted:   #79786F;
+      --rule:    #0C0C0A;
+      --f-disp:  'Staatliches', sans-serif;
+      --f-body:  'Schibsted Grotesk', sans-serif;
+      --f-mono:  'IBM Plex Mono', monospace;
+      --pad:     clamp(1.25rem, 5vw, 3.5rem);
+      --mw:      1200px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--f-body);
+      font-size: clamp(14px, 1.7vw, 17px);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: var(--mw);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+
+    /* ── RULES ───────────────────────────────────────────── */
+    .rule {
+      display: block;
+      height: 1px;
+      background: var(--rule);
+      width: 0;
+      transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .rule--thick { height: 3px; }
+    .rule--on    { width: 100%; }
+
+    /* ── HEADER ──────────────────────────────────────────── */
+    .site-header {
+      border-bottom: 1px solid var(--ink);
+      padding: 1.1rem 0;
+    }
+    .site-header .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .h-logo {
+      font-family: var(--f-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .h-loc {
+      font-family: var(--f-mono);
+      font-size: 0.67rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .h-cta {
+      font-family: var(--f-mono);
+      font-size: 0.67rem;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .h-cta:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    .hero { padding: clamp(2.5rem, 7vw, 5.5rem) 0 clamp(2rem, 5vw, 4rem); }
+
+    .hero-dateline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: clamp(1.25rem, 3vw, 2rem);
+      gap: 1rem;
+    }
+    .dateline {
+      font-family: var(--f-mono);
+      font-size: 0.67rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .dateline-dot { color: var(--accent); }
+
+    .hero-stage {
+      padding: clamp(1.25rem, 3.5vw, 2.75rem) 0;
+      text-align: center;
+    }
+    .hero-name {
+      font-family: var(--f-disp);
+      font-size: clamp(5rem, 19.5vw, 15rem);
+      line-height: 0.88;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      display: block;
+      opacity: 0;
+      transform: translateY(48px);
+      transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hero-name--on { opacity: 1; transform: translateY(0); }
+
+    .hero-foot {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding-top: clamp(1.5rem, 3.5vw, 2.75rem);
+    }
+    @media (min-width: 580px) {
+      .hero-foot {
+        grid-template-columns: 1fr auto;
+        align-items: flex-end;
+      }
+    }
+
+    .hero-tagline {
+      font-family: var(--f-body);
+      font-size: clamp(1.05rem, 2.2vw, 1.5rem);
+      font-weight: 300;
+      line-height: 1.4;
+      max-width: 30ch;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease 0.38s, transform 0.7s ease 0.38s;
+    }
+    .hero-tagline em { font-style: italic; font-weight: 300; }
+    .hero-tagline--on { opacity: 1; transform: translateY(0); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--f-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--ink);
+      text-decoration: none;
+      padding: 0.8rem 1.4rem;
+      border: 1px solid var(--ink);
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .btn:hover { background: var(--accent); border-color: var(--accent); }
+    .btn .arr { display: inline-block; transition: transform 0.2s; }
+    .btn:hover .arr { transform: translateX(3px); }
+
+    .hero-cta {
+      opacity: 0;
+      transition: opacity 0.7s ease 0.58s;
+    }
+    .hero-cta--on { opacity: 1; }
+
+    /* ── SERVICES ────────────────────────────────────────── */
+    .services { padding: clamp(3rem, 8vw, 6.5rem) 0; }
+
+    .sec-title-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+      gap: 1rem;
+    }
+    .sec-title {
+      font-family: var(--f-disp);
+      font-size: clamp(2rem, 5.5vw, 4rem);
+      line-height: 1;
+      letter-spacing: 0.03em;
+    }
+    .sec-num {
+      font-family: var(--f-mono);
+      font-size: 0.67rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      flex-shrink: 0;
+    }
+
+    .services-list { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+
+    .svc {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.6rem 2rem;
+      padding: clamp(1.25rem, 2.5vw, 2rem) 0;
+      border-top: 1px solid var(--ink);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .svc:last-child { border-bottom: 1px solid var(--ink); }
+    .svc--on { opacity: 1; transform: translateY(0); }
+
+    @media (min-width: 620px) {
+      .svc { grid-template-columns: 5fr 7fr; align-items: start; }
+    }
+
+    .svc-left {}
+    .svc-idx {
+      font-family: var(--f-mono);
+      font-size: 0.62rem;
+      color: var(--accent);
+      letter-spacing: 0.14em;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .svc-name {
+      font-family: var(--f-disp);
+      font-size: clamp(1.7rem, 3.8vw, 2.7rem);
+      line-height: 1.0;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+    }
+    .svc-desc {
+      font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--ink);
+      padding-top: 0.5rem;
+    }
+    @media (min-width: 620px) {
+      .svc-desc { padding-top: 0.15rem; }
+    }
+
+    /* ── CONTACT ─────────────────────────────────────────── */
+    .contact { padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(4rem, 10vw, 8rem); }
+
+    .contact-hed {
+      font-family: var(--f-disp);
+      font-size: clamp(3.5rem, 10vw, 9rem);
+      line-height: 0.9;
+      color: var(--ink);
+      margin-top: clamp(1.5rem, 3vw, 2.5rem);
+      margin-bottom: clamp(2rem, 5vw, 4rem);
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .contact-hed--on { opacity: 1; transform: translateY(0); }
+
+    .contact-body {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      opacity: 0;
+      transition: opacity 0.65s ease 0.2s;
+    }
+    @media (min-width: 720px) {
+      .contact-body { grid-template-columns: 4fr 6fr; }
+    }
+    .contact-body--on { opacity: 1; }
+
+    .c-info p {
+      font-size: clamp(0.88rem, 1.45vw, 1rem);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 34ch;
+    }
+    .c-email-block { margin-top: 1.75rem; }
+    .c-label {
+      font-family: var(--f-mono);
+      font-size: 0.62rem;
+      color: var(--muted);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .c-email {
+      font-family: var(--f-mono);
+      font-size: clamp(0.85rem, 1.8vw, 1rem);
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .c-email:hover { color: var(--accent); border-color: var(--accent); }
+
+    .c-form { display: flex; flex-direction: column; gap: 1.1rem; }
+    .f-field { display: flex; flex-direction: column; gap: 0.35rem; }
+    .f-label {
+      font-family: var(--f-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .f-input, .f-textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--ink);
+      padding: 0.45rem 0;
+      font-family: var(--f-body);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .f-input:focus, .f-textarea:focus { border-color: var(--accent); }
+    .f-input::placeholder, .f-textarea::placeholder { color: var(--muted); }
+    .f-textarea { resize: none; min-height: 76px; }
+    .f-submit { margin-top: 0.4rem; align-self: flex-start; }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid var(--ink);
+      padding: 1.25rem 0;
+    }
+    .site-footer .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .f-name {
+      font-family: var(--f-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .f-meta {
+      font-family: var(--f-mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── FORM SUCCESS STATE ───────────────────────────────── */
+    .form-success {
+      display: none;
+      font-family: var(--f-mono);
+      font-size: 0.8rem;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+      padding: 1rem 1.25rem;
+      letter-spacing: 0.06em;
+    }
+    .form-success.show { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="wrap">
+      <a href="/" class="h-logo">Pearce Labs</a>
+      <span class="h-loc">Falls Church, VA</span>
+      <a href="#contact" class="h-cta">Get in touch</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+
+      <div class="hero-dateline">
+        <span class="dateline">Digital Services <span class="dateline-dot">·</span> DC Metro Area</span>
+        <span class="dateline">Est. 2024</span>
+      </div>
+
+      <span class="rule rule--thick js-rule"></span>
+
+      <div class="hero-stage">
+        <span class="hero-name js-hero-name">PEARCE LABS</span>
+      </div>
+
+      <span class="rule rule--thick js-rule"></span>
+
+      <div class="hero-foot">
+        <p class="hero-tagline js-tagline">
+          Senior-level technology,<br>
+          <em>without the agency overhead.</em>
+        </p>
+        <span class="hero-cta js-hero-cta">
+          <a href="#contact" class="btn">Get in touch <span class="arr">→</span></a>
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="wrap">
+
+      <div class="sec-title-row">
+        <span class="sec-title">SERVICES</span>
+        <span class="sec-num">01 / 02</span>
+      </div>
+      <span class="rule js-rule"></span>
+
+      <div class="services-list">
+
+        <div class="svc js-svc">
+          <div class="svc-left">
+            <span class="svc-idx">01</span>
+            <h3 class="svc-name">Software Design &amp; Development</h3>
+          </div>
+          <p class="svc-desc">Custom software built to solve real problems — not off-the-shelf solutions forced to fit. From architecture through deployment, built to last.</p>
+        </div>
+
+        <div class="svc js-svc">
+          <div class="svc-left">
+            <span class="svc-idx">02</span>
+            <h3 class="svc-name">AI Implementation</h3>
+          </div>
+          <p class="svc-desc">Practical AI integrations that automate the right things. No hype — just tools that save your team time and sharpen your competitive edge.</p>
+        </div>
+
+        <div class="svc js-svc">
+          <div class="svc-left">
+            <span class="svc-idx">03</span>
+            <h3 class="svc-name">Website Building</h3>
+          </div>
+          <p class="svc-desc">Fast, polished websites that reflect the quality of your business. Built for performance, not for award shows.</p>
+        </div>
+
+        <div class="svc js-svc">
+          <div class="svc-left">
+            <span class="svc-idx">04</span>
+            <h3 class="svc-name">Technology Consulting</h3>
+          </div>
+          <p class="svc-desc">Honest technical guidance from someone who has built things. Evaluate vendors, plan a stack, or get a second opinion before you commit.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+
+      <div class="sec-title-row">
+        <span class="sec-num">02 / 02</span>
+      </div>
+      <span class="rule js-rule"></span>
+
+      <h2 class="contact-hed js-contact-hed">LET'S WORK<br>TOGETHER.</h2>
+
+      <div class="contact-body js-contact-body">
+
+        <div class="c-info">
+          <p>Based in Falls Church, VA. Available to businesses across the DC metro area and beyond. No retainers required to start a conversation.</p>
+          <div class="c-email-block">
+            <span class="c-label">Email</span>
+            <a href="mailto:hello@pearcelabs.com" class="c-email">hello@pearcelabs.com</a>
+          </div>
+        </div>
+
+        <form class="c-form" id="contact-form" novalidate>
+          <div class="f-field">
+            <label class="f-label" for="f-name">Name</label>
+            <input class="f-input" type="text" id="f-name" name="name" placeholder="Your name" required autocomplete="name">
+          </div>
+          <div class="f-field">
+            <label class="f-label" for="f-email">Email</label>
+            <input class="f-input" type="email" id="f-email" name="email" placeholder="your@email.com" required autocomplete="email">
+          </div>
+          <div class="f-field">
+            <label class="f-label" for="f-msg">Message</label>
+            <textarea class="f-textarea" id="f-msg" name="message" placeholder="Tell me what you're working on" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn f-submit">Send message <span class="arr">→</span></button>
+          <div class="form-success" id="form-success">Message sent — I'll be in touch shortly.</div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <span class="f-name">Pearce Labs</span>
+      <span class="f-meta">Falls Church, Virginia · DC Metro Area</span>
+      <span class="f-meta">© 2026 Pearce Labs</span>
+    </div>
+  </footer>
+
+  <script>
+    // Rules animate in on load
+    const rules = document.querySelectorAll('.js-rule');
+    rules.forEach((r, i) => setTimeout(() => r.classList.add('rule--on'), i * 120));
+
+    // Hero name
+    setTimeout(() => document.querySelector('.js-hero-name')?.classList.add('hero-name--on'), 80);
+
+    // Tagline + CTA
+    setTimeout(() => document.querySelector('.js-tagline')?.classList.add('hero-tagline--on'), 420);
+    setTimeout(() => document.querySelector('.js-hero-cta')?.classList.add('hero-cta--on'), 620);
+
+    // Scroll-triggered reveals
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add(e.target.dataset.on);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.js-svc').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.09}s`;
+      el.dataset.on = 'svc--on';
+      io.observe(el);
+    });
+
+    [
+      ['.js-contact-hed',  'contact-hed--on'],
+      ['.js-contact-body', 'contact-body--on'],
+    ].forEach(([sel, cls]) => {
+      const el = document.querySelector(sel);
+      if (el) { el.dataset.on = cls; io.observe(el); }
+    });
+
+    // Contact form
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('.f-submit');
+      btn.textContent = 'Sent ✓';
+      btn.style.cssText = 'background:#2A5C2A;border-color:#2A5C2A;pointer-events:none';
+      document.getElementById('form-success').classList.add('show');
+      this.querySelectorAll('.f-field').forEach(f => f.style.display = 'none');
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink:    #0C0C0A;
+  --color-paper:  #F7F6F2;
+  --color-accent: oklch(47.3% 0.137 46.201);
+  --font-body:    'Schibsted Grotesk', sans-serif;
+  --font-mono:    'IBM Plex Mono', monospace;
+}
+
+@layer base {
+  body {
+    font-size: clamp(14px, 1.7vw, 17px);
+    line-height: 1.65;
+  }
+}
+
+/* Button — reused in multiple places with a child .arr hover effect */
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--color-paper);
+    background: var(--color-ink);
+    text-decoration: none;
+    padding: 0.8rem 1.4rem;
+    border: 1px solid var(--color-ink);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .btn:hover { background: var(--color-accent); border-color: var(--color-accent); }
+  .btn .arr { display: inline-block; transition: transform 0.2s; }
+  .btn:hover .arr { transform: translateX(3px); }
+}
+
+/* ── JS-triggered reveal states ─────────────────────────────── */
+
+.rule {
+  display: block;
+  height: 1px;
+  background: var(--color-stone-500);
+  width: 0;
+  transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rule--thick { height: 3px; }
+.rule--on    { width: 100%; }
+
+.hero-name {
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-name--on { opacity: 1; transform: translateY(0); }
+
+.hero-tagline {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease 0.38s, transform 0.7s ease 0.38s;
+}
+.hero-tagline--on { opacity: 1; transform: translateY(0); }
+
+.hero-cta {
+  opacity: 0;
+  transition: opacity 0.7s ease 0.58s;
+}
+.hero-cta--on { opacity: 1; }
+
+.svc {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.svc--on { opacity: 1; transform: translateY(0); }
+
+.contact-hed {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.contact-hed--on { opacity: 1; transform: translateY(0); }
+
+.contact-body {
+  opacity: 0;
+  transition: opacity 0.65s ease 0.2s;
+}
+.contact-body--on { opacity: 1; }

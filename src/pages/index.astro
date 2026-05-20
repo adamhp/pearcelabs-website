@@ -1,0 +1,334 @@
+---
+import Wordmark from "../components/Wordmark.astro";
+import Layout from "../layouts/Layout.astro";
+
+const services = [
+  {
+    index: "01",
+    name: "Software Development",
+    desc: "Custom software designed around your specific requirements, built from architecture through deployment with long-term maintainability in mind.",
+  },
+  {
+    index: "02",
+    name: "AI Implementation",
+    desc: "AI integrations that automate repetitive tasks and surface useful information, saving your team time and improving how you operate.",
+  },
+  {
+    index: "03",
+    name: "Data Engineering & Visualization",
+    desc: "Data pipeline architecture and dashboard design that makes your data reliable, accessible, and useful for decision-making.",
+  },
+  {
+    index: "04",
+    name: "Web and Presence",
+    desc: "Fast, polished websites that reflect the quality of your work, built with performance as a core requirement.",
+  },
+  {
+    index: "05",
+    name: "Technology Consulting",
+    desc: "Technical guidance from practitioners who have built production systems. Useful for vendor evaluation, stack planning, or reviewing technical decisions before you commit.",
+  },
+];
+
+const servicesAbbrev = ["Software", "AI", "Data", "Web", "Consulting"];
+
+const inputClass =
+  "bg-transparent border-0 border-b border-stone-500 py-2 font-body text-sm text-ink outline-none transition-colors duration-200 focus:border-accent appearance-none rounded-none placeholder:text-stone-500 w-full";
+---
+
+<Layout>
+  <!-- HEADER -->
+  <header class="py-4">
+    <div class="flex items-center justify-between gap-4 h-6">
+      <Wordmark />
+      <span class="font-mono text-xs text-stone-500 tracking-widest uppercase"
+        >Falls Church, VA</span
+      >
+      <a
+        href="#contact"
+        class="font-mono text-xs font-medium tracking-widest uppercase text-ink no-underline border-b border-transparent pb-px transition-colors duration-200 hover:text-accent hover:border-accent"
+      >
+        Get in touch
+      </a>
+    </div>
+    <div class="border-b border-stone-500 my-2"></div>
+    <div
+      class="flex justify-between items-center font-mono text-xs tracking-widest uppercase text-stone-500 h-6"
+    >
+      <div class="flex flex-row items-center space-x-4">
+        {
+          servicesAbbrev.map((item, i) => (
+            <>
+              {i > 0 && <div class="text-accent"> · </div>}
+              <div>{item}</div>
+            </>
+          ))
+        }
+      </div>
+      <span class="font-mono text-xs tracking-widest uppercase text-stone-500"
+        >Est. 2025</span
+      >
+    </div>
+  </header>
+  <!-- HERO -->
+  <section class="pt-10 sm:pt-20 pb-8 sm:pb-16">
+    <div class="py-5 sm:py-10 text-center">
+      <span
+        class="hero-name js-hero-name font-body font-black text-7xl leading-none tracking-tight text-ink block"
+      >
+        pearce <span class="text-accent mx-2">/</span> labs
+      </span>
+    </div>
+    <div
+      class="grid grid-cols-1 gap-6 pt-6 sm:pt-10 sm:grid-cols-[1fr_auto] sm:items-end"
+    >
+      <div
+        class="hero-tagline js-tagline font-body text-xl leading-snug max-w-sm"
+      >
+        <div>Full-stack thinking. <em>Full-scope execution.</em></div>
+      </div>
+      <span class="hero-cta js-hero-cta">
+        <a href="#contact" class="btn"
+          >Get in touch <span class="arr">→</span></a
+        >
+      </span>
+    </div>
+  </section>
+  <!-- SERVICES -->
+  <section class="py-12 sm:py-24" id="services">
+    <div class="flex items-baseline justify-between mb-2.5 gap-4">
+      <span
+        class="font-body font-black text-3xl leading-none tracking-tight uppercase"
+        >Services</span
+      >
+      <span class="font-mono text-xs text-stone-500 tracking-widest shrink-0"
+        >01 / 02</span
+      >
+    </div>
+    <span class="rule js-rule"></span>
+    <div class="mt-6 sm:mt-10 divide-y divide-stone-500 *:py-12">
+      {
+        services.map((svc) => (
+          <div class="svc js-svc grid grid-cols-1 gap-x-6 sm:grid-cols-[5fr_7fr] sm:items-start">
+            <div class="relative">
+              <span class="self-top -top-4 absolute font-mono text-xs text-accent tracking-widest block mb-1.5">
+                {svc.index}
+              </span>
+              <h3
+                class="self-top font-body font-bold text-xl leading-tight tracking-tight"
+                set:html={svc.name}
+              />
+            </div>
+            <p class="text-sm leading-relaxed pt-2 sm:pt-0.5">{svc.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+  <!-- CONTACT -->
+  <section class="pt-12 pb-32" id="contact">
+    <div class="wrap">
+      <div class="flex items-baseline justify-between mb-2.5">
+        <span class="font-mono text-xs text-stone-500 tracking-widest"
+          >02 / 02</span
+        >
+      </div>
+      <span class="rule js-rule"></span>
+      <h2
+        class="contact-hed js-contact-hed font-body font-black text-5xl leading-none tracking-tight uppercase mt-6 sm:mt-10 mb-8 sm:mb-16"
+      >
+        LET' S WORK TOGETHER.<br />
+      </h2>
+    </div>
+
+    <div
+      class="contact-body js-contact-body grid grid-cols-1 gap-8 sm:gap-16 md:grid-cols-[4fr_6fr]"
+    >
+      <div>
+        <p class="text-base leading-relaxed">
+          Based in Falls Church, VA. Available to businesses across the DC metro
+          area and beyond.
+        </p>
+        <div class="mt-7">
+          <span
+            class="font-mono text-xs text-stone-500 tracking-widest uppercase block mb-1.5"
+            >Email</span
+          >
+          <a
+            href="mailto:hello@pearcelabs.com"
+            class="font-mono text-sm sm:text-base text-ink no-underline border-b border-stone-500 pb-0.5 transition-colors duration-200 hover:text-accent hover:border-accent"
+          >
+            email@pearcelabs.com
+          </a>
+        </div>
+      </div>
+
+      <form
+        class="flex flex-col gap-4"
+        id="contact-form"
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden">
+          <label>Don't fill this out: <input name="bot-field" /></label>
+        </p>
+        <div class="flex flex-col gap-1.5">
+          <label
+            class="font-mono text-xs tracking-widest uppercase text-stone-500"
+            for="name">Name</label
+          >
+          <input
+            class={inputClass}
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your name"
+            required
+            autocomplete="name"
+          />
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label
+            class="font-mono text-xs tracking-widest uppercase text-stone-500"
+            for="email">Email</label
+          >
+          <input
+            class={inputClass}
+            type="email"
+            id="email"
+            name="email"
+            placeholder="your@email.com"
+            required
+            autocomplete="email"
+          />
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label
+            class="font-mono text-xs tracking-widest uppercase text-stone-500"
+            for="message">Message</label
+          >
+          <textarea
+            class={`${inputClass} resize-none min-h-20`}
+            id="message"
+            name="message"
+            placeholder="Tell me what you're working on"
+            rows={3}
+            required></textarea>
+        </div>
+        <button type="submit" class="btn mt-1.5 self-start">
+          Send message <span class="arr">→</span>
+        </button>
+        <div
+          class="hidden [&.show]:block font-mono text-sm text-ink border border-stone-500 p-4 tracking-wider"
+          id="form-success"
+        >
+          Message received — we'll be in touch shortly.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-4">
+    <div class="wrap flex items-center justify-between gap-4 h-6">
+      <Wordmark />
+      <span class="font-mono text-xs text-stone-500 tracking-widest uppercase"
+        >Falls Church, VA</span
+      >
+      <span class="font-mono text-xs text-stone-500"
+        >© 2026 Pearce Labs, LLC.</span
+      >
+    </div>
+  </footer>
+
+  <script>
+    // Rules animate in on load
+    document.querySelectorAll<HTMLElement>(".js-rule").forEach((r, i) => {
+      setTimeout(() => r.classList.add("rule--on"), i * 120);
+    });
+
+    setTimeout(
+      () =>
+        document.querySelector(".js-hero-name")?.classList.add("hero-name--on"),
+      80,
+    );
+    setTimeout(
+      () =>
+        document
+          .querySelector(".js-tagline")
+          ?.classList.add("hero-tagline--on"),
+      420,
+    );
+    setTimeout(
+      () =>
+        document.querySelector(".js-hero-cta")?.classList.add("hero-cta--on"),
+      620,
+    );
+
+    // Scroll-triggered reveals
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const target = e.target as HTMLElement;
+          target.classList.add(target.dataset.on!);
+          io.unobserve(target);
+        });
+      },
+      { threshold: 0.12 },
+    );
+
+    document.querySelectorAll<HTMLElement>(".js-svc").forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.09}s`;
+      el.dataset.on = "svc--on";
+      io.observe(el);
+    });
+
+    (
+      [
+        [".js-contact-hed", "contact-hed--on"],
+        [".js-contact-body", "contact-body--on"],
+      ] as [string, string][]
+    ).forEach(([sel, cls]) => {
+      const el = document.querySelector<HTMLElement>(sel);
+      if (el) {
+        el.dataset.on = cls;
+        io.observe(el);
+      }
+    });
+
+    // Contact form
+    document
+      .getElementById("contact-form")
+      ?.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const form = e.currentTarget as HTMLFormElement;
+        const btn = form.querySelector<HTMLButtonElement>(".btn")!;
+        btn.textContent = "Sending…";
+        btn.style.pointerEvents = "none";
+        try {
+          await fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(
+              new FormData(form) as unknown as Record<string, string>,
+            ).toString(),
+          });
+          btn.textContent = "Sent ✓";
+          btn.style.cssText =
+            "background:#2A5C2A;border-color:#2A5C2A;pointer-events:none";
+          document.getElementById("form-success")?.classList.add("show");
+          form
+            .querySelectorAll<HTMLElement>(".flex.flex-col")
+            .forEach((f) => (f.style.display = "none"));
+        } catch {
+          btn.textContent = "Send message";
+          btn.style.pointerEvents = "";
+        }
+      });
+  </script>
+</Layout>
