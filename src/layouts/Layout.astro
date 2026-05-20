@@ -8,8 +8,8 @@ interface Props {
 }
 
 const {
-  title = "Pearce Labs | Senior Digital Services Falls Church VA",
-  description = "Senior-level digital services for small businesses in Falls Church, VA and the DC metro area. Software development, AI implementation, data engineering, web design, and technology consulting.",
+  title = "Pearce Labs",
+  description = "Digital services for small businesses in Falls Church, VA and the DC metro area. Software development, AI implementation, data engineering, web design, and technology consulting.",
   image = "/og-image.png",
 } = Astro.props;
 
@@ -22,7 +22,7 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: "Pearce Labs",
   description:
-    "Senior-level digital services for small businesses in Falls Church, VA and the DC metro area.",
+    "Digital services for small businesses in Falls Church, VA and the DC metro area.",
   url: siteUrl,
   email: "hello@pearcelabs.com",
   address: {
@@ -77,6 +77,14 @@ const jsonLd = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
 
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Pearce Labs" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <!-- OpenGraph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Pearce Labs" />
@@ -93,10 +101,6 @@ const jsonLd = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
