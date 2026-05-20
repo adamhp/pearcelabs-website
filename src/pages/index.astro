@@ -1,40 +1,9 @@
 ---
 import Footer from "../components/Footer.astro";
-import Wordmark from "../components/Wordmark.astro";
-import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import { services } from "../constants";
 
-const services = [
-  {
-    index: "01",
-    abbrev: "Software",
-    name: "Software Development",
-    desc: "Custom software designed around your specific requirements, built from architecture through deployment with long-term maintainability in mind.",
-  },
-  {
-    index: "02",
-    abbrev: "AI",
-    name: "AI Implementation",
-    desc: "AI integrations that automate repetitive tasks and surface useful information, saving your team time and improving how you operate.",
-  },
-  {
-    index: "03",
-    abbrev: "Data",
-    name: "Data Engineering & Visualization",
-    desc: "Data pipeline architecture and dashboard design that makes your data reliable, accessible, and useful for decision-making.",
-  },
-  {
-    index: "04",
-    abbrev: "Web",
-    name: "Web and Presence",
-    desc: "Fast, polished websites that reflect the quality of your work, built with performance as a core requirement.",
-  },
-  {
-    index: "05",
-    abbrev: "Consulting",
-    name: "Technology Consulting",
-    desc: "Technical guidance from practitioners who have built production systems. Useful for vendor evaluation, stack planning, or reviewing technical decisions before you commit.",
-  },
-];
+import Layout from "../layouts/Layout.astro";
 
 const inputClass =
   "bg-transparent border-0 border-b border-stone-500 py-2 font-body text-sm text-ink outline-none transition-colors duration-200 focus:border-accent appearance-none rounded-none placeholder:text-stone-500 w-full";
@@ -44,52 +13,22 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
 
 <Layout>
   <!-- HEADER -->
-  <header class="py-4">
-    <div class="flex h-6 items-center justify-between">
-      <Wordmark />
-      <div
-        class="min-w-32 font-mono text-xs tracking-widest text-stone-500 uppercase"
-      >
-        Falls Church, VA
-      </div>
-      <div
-        class="min-w-32 text-right font-mono text-xs tracking-widest text-stone-500 uppercase"
-      >
-        Est. 2025
-      </div>
-    </div>
-    <hr class="my-2 border-stone-500" />
-    <div
-      class="flex h-6 items-center justify-center font-mono text-xs tracking-widest text-stone-500 uppercase"
-    >
-      <div class="mx-auto flex items-center justify-between gap-4">
-        {
-          services.map((svc, i) => (
-            <>
-              {i > 0 && <div class="text-accent"> · </div>}
-              <div>{svc.abbrev}</div>
-            </>
-          ))
-        }
-      </div>
-    </div>
-  </header>
+  <Header />
   <!-- HERO -->
   <section class="pt-10 pb-8 sm:pt-20 sm:pb-16">
     <h1
-      class="hero-name js-hero-name py-5 text-center font-body text-7xl leading-none font-black tracking-tight text-ink sm:py-10"
-    >
+      class="js-hero-name translate-y-12 py-5 text-center font-body text-7xl leading-none font-black tracking-tighter text-ink opacity-0 transition-[opacity,transform] duration-[850ms] ease-out data-[on]:translate-y-0 data-[on]:opacity-100 sm:py-10">
       pearce <span class="mx-2 text-accent">/</span> labs
     </h1>
     <div
-      class="grid grid-cols-1 gap-6 pt-6 sm:grid-cols-[1fr_auto] sm:items-end sm:pt-10"
-    >
+      class="grid grid-cols-1 gap-6 pt-6 sm:grid-cols-[1fr_auto] sm:items-end sm:pt-10">
       <div
-        class="hero-tagline js-tagline max-w-sm font-body text-xl leading-snug"
-      >
+        class="js-tagline max-w-sm translate-y-4 font-body text-xl leading-snug opacity-0 transition-[opacity,transform] delay-[380ms] duration-700 ease-out data-[on]:translate-y-0 data-[on]:opacity-100">
         Full-stack thinking. <em>Full-scope execution.</em>
       </div>
-      <a href="#contact" class="btn hero-cta js-hero-cta"
+      <a
+        href="#contact"
+        class="btn js-hero-cta opacity-0 transition-opacity delay-[580ms] duration-700 data-[on]:opacity-100"
         >Get in touch <span class="arr">→</span></a
       >
     </div>
@@ -98,19 +37,20 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
   <section class="py-12 sm:py-24" id="services">
     <div class="mb-2.5 flex items-baseline justify-between gap-4">
       <h2
-        class="font-body text-3xl leading-none font-black tracking-tight uppercase"
-      >
+        class="font-body text-3xl leading-none font-black tracking-tight uppercase">
         Services
       </h2>
       <span class="shrink-0 font-mono text-xs tracking-widest text-stone-500"
         >01 / 02</span
       >
     </div>
-    <span class="rule js-rule"></span>
+    <span
+      class="js-rule block h-px w-0 bg-stone-500 transition-[width] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] data-[on]:w-full"
+    ></span>
     <div class="mt-6 divide-y divide-stone-500 *:py-12 sm:mt-10">
       {
         services.map((svc) => (
-          <div class="svc js-svc grid grid-cols-1 gap-x-6 sm:grid-cols-[5fr_7fr] sm:items-start">
+          <div class="js-svc grid translate-y-5 grid-cols-1 gap-x-6 opacity-0 transition-[opacity,transform] duration-[550ms] data-[on]:translate-y-0 data-[on]:opacity-100 sm:grid-cols-[5fr_7fr] sm:items-start">
             <div class="relative">
               <span class="self-top absolute -top-4 mb-1.5 block font-mono text-xs tracking-widest text-accent">
                 {svc.index}
@@ -130,19 +70,19 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
   <section class="pt-12 pb-32" id="contact">
     <div class="mb-2.5 flex items-baseline justify-between gap-4">
       <h2
-        class="contact-hed js-contact-hed font-body text-3xl leading-none font-black tracking-tight uppercase"
-      >
+        class="js-contact-hed translate-y-6 font-body text-3xl leading-none font-black tracking-tight uppercase opacity-0 transition-[opacity,transform] duration-[750ms] ease-[cubic-bezier(0.16,1,0.3,1)] data-[on]:translate-y-0 data-[on]:opacity-100">
         Let's work together
       </h2>
       <span class="shrink-0 font-mono text-xs tracking-widest text-stone-500"
         >02 / 02</span
       >
     </div>
-    <span class="rule js-rule"></span>
+    <span
+      class="js-rule block h-px w-0 bg-stone-500 transition-[width] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] data-[on]:w-full"
+    ></span>
     <!-- CONTACT -->
     <div
-      class="contact-body js-contact-body mt-6 grid grid-cols-1 gap-8 sm:gap-16 md:grid-cols-[4fr_6fr]"
-    >
+      class="js-contact-body mt-6 grid grid-cols-1 gap-8 opacity-0 transition-opacity delay-200 duration-[650ms] data-[on]:opacity-100 sm:gap-16 md:grid-cols-[4fr_6fr]">
       <div>
         <p class="text-base leading-relaxed">
           Based in Falls Church, VA. Available to businesses across the DC metro
@@ -152,8 +92,7 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
           <span class={`${labelClass} mb-1.5 block`}>Email</span>
           <a
             href="mailto:hello@pearcelabs.com"
-            class="border-b border-stone-500 pb-0.5 font-mono text-sm text-ink no-underline transition-colors duration-200 hover:border-accent hover:text-accent sm:text-base"
-          >
+            class="border-b border-stone-500 pb-0.5 font-mono text-sm text-ink no-underline transition-colors duration-200 hover:border-accent hover:text-accent sm:text-base">
             email@pearcelabs.com
           </a>
         </div>
@@ -166,8 +105,7 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
         method="POST"
         data-netlify="true"
         netlify-honeypot="bot-field"
-        novalidate
-      >
+        novalidate>
         <input type="hidden" name="form-name" value="contact" />
         <p class="hidden">
           <label>Don't fill this out: <input name="bot-field" /></label>
@@ -211,8 +149,7 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
         </button>
         <div
           class="pointer-events-none absolute inset-0 flex items-center font-mono text-sm tracking-wider text-ink opacity-0 transition-opacity duration-500"
-          id="form-success"
-        >
+          id="form-success">
           Message received — we'll be in touch shortly.
         </div>
       </form>
@@ -223,19 +160,24 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
   <Footer />
 
   <script>
-    // Rules animate in on load
+    // Load-triggered reveals
     document.querySelectorAll<HTMLElement>(".js-rule").forEach((r, i) => {
-      setTimeout(() => r.classList.add("rule--on"), i * 120);
+      setTimeout(() => {
+        r.dataset.on = "";
+      }, i * 120);
     });
 
     (
       [
-        [".js-hero-name", "hero-name--on", 80],
-        [".js-tagline", "hero-tagline--on", 420],
-        [".js-hero-cta", "hero-cta--on", 620],
-      ] as [string, string, number][]
-    ).forEach(([sel, cls, delay]) => {
-      setTimeout(() => document.querySelector(sel)?.classList.add(cls), delay);
+        [".js-hero-name", 80],
+        [".js-tagline", 420],
+        [".js-hero-cta", 620],
+      ] as [string, number][]
+    ).forEach(([sel, delay]) => {
+      setTimeout(() => {
+        const el = document.querySelector<HTMLElement>(sel);
+        if (el) el.dataset.on = "";
+      }, delay);
     });
 
     // Scroll-triggered reveals
@@ -243,9 +185,8 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
       (entries) => {
         entries.forEach((e) => {
           if (!e.isIntersecting) return;
-          const target = e.target as HTMLElement;
-          target.classList.add(target.dataset.on!);
-          io.unobserve(target);
+          (e.target as HTMLElement).dataset.on = "";
+          io.unobserve(e.target);
         });
       },
       { threshold: 0.12 },
@@ -253,21 +194,12 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
 
     document.querySelectorAll<HTMLElement>(".js-svc").forEach((el, i) => {
       el.style.transitionDelay = `${i * 0.09}s`;
-      el.dataset.on = "svc--on";
       io.observe(el);
     });
 
-    (
-      [
-        [".js-contact-hed", "contact-hed--on"],
-        [".js-contact-body", "contact-body--on"],
-      ] as [string, string][]
-    ).forEach(([sel, cls]) => {
+    [".js-contact-hed", ".js-contact-body"].forEach((sel) => {
       const el = document.querySelector<HTMLElement>(sel);
-      if (el) {
-        el.dataset.on = cls;
-        io.observe(el);
-      }
+      if (el) io.observe(el);
     });
 
     // Contact form

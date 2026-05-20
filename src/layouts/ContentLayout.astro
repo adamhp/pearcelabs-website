@@ -1,5 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 import Wordmark from "../components/Wordmark.astro";
 import Layout from "./Layout.astro";
 
@@ -12,17 +13,7 @@ const { title, description } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
-  <header class="py-4">
-    <div class="flex h-6 items-center justify-between">
-      <Wordmark />
-      <a
-        href="/"
-        class="font-mono text-xs tracking-widest text-stone-500 uppercase transition-colors duration-200 hover:text-accent"
-        >← Home</a
-      >
-    </div>
-    <hr class="my-2 border-stone-500" aria-hidden="true" />
-  </header>
+  <Header />
   <main class="prose mx-auto max-w-2xl px-4 py-12">
     <slot />
   </main>

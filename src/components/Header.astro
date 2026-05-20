@@ -1,0 +1,48 @@
+---
+import { matchPathname } from "astro/assets/utils";
+import Wordmark from "../components/Wordmark.astro";
+import { services } from "../constants";
+const { pathname } = Astro.url;
+---
+
+<header class="py-4">
+  <div class="grid h-8 grid-cols-3 items-center">
+    <Wordmark />
+    <div
+      class="text-center font-mono text-xs tracking-widest text-stone-500 uppercase"
+    >
+      Falls Church, VA
+    </div>
+    {
+      pathname !== "/" ? (
+        <div class="justify-self-end">
+          <a
+            href="/"
+            class="font-mono text-xs tracking-widest text-stone-500 uppercase transition-colors duration-200 hover:text-accent"
+          >
+            ← Home
+          </a>
+        </div>
+      ) : (
+        <div class="justify-self-end font-mono text-xs tracking-widest text-stone-500 uppercase">
+          Est. 2025
+        </div>
+      )
+    }
+  </div>
+  <hr class="my-2 border-stone-500" />
+  <div
+    class="flex h-6 items-center justify-center font-mono text-xs tracking-widest text-stone-500 uppercase"
+  >
+    <div class="mx-auto flex items-center justify-between gap-4">
+      {
+        services.map((svc, i) => (
+          <>
+            {i > 0 && <div class="text-accent"> · </div>}
+            <div>{svc.abbrev}</div>
+          </>
+        ))
+      }
+    </div>
+  </div>
+</header>

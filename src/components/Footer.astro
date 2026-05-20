@@ -3,12 +3,15 @@ import Wordmark from "./Wordmark.astro";
 ---
 
 <footer class="py-4">
-  <div class="flex h-6 items-center justify-between gap-4">
+  <div class="grid h-6 grid-cols-3 items-center">
     <Wordmark />
-    <span class="font-mono text-xs tracking-widest text-stone-500 uppercase"
+    <span
+      class="text-center font-mono text-xs tracking-widest text-stone-500 uppercase"
       >Falls Church, VA</span
     >
-    <span class="font-mono text-xs text-stone-500">© 2026 Pearce Labs, LLC.</span>
+    <div class="text-right font-mono text-xs text-stone-500">
+      © 2026 Pearce Labs, LLC.
+    </div>
   </div>
   <hr class="my-2 border-stone-500" aria-hidden="true" />
   <div
