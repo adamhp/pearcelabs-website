@@ -16,27 +16,23 @@ import Layout from "../layouts/Layout.astro";
   <section class="py-12">
     <h1
       id="hero"
-      class="translate-y-12 py-5 text-center font-body text-7xl leading-none font-black tracking-tighter text-ink opacity-0 transition-[opacity,transform] duration-[850ms] ease-out data-[on]:translate-y-0 data-[on]:opacity-100 sm:py-10"
-    >
+      class="py-5 text-center font-body text-5xl leading-none font-black tracking-tighter text-ink opacity-0 transition-[opacity,transform] duration-[850ms] ease-out data-[on]:opacity-100 sm:py-10 sm:text-7xl">
       pearce <span class="mx-2 text-accent">/</span> labs
     </h1>
-    <div class="mx-auto flex w-full max-w-sm flex-col">
+    <div class="mx-auto flex w-full max-w-xs flex-col sm:max-w-sm">
       <div
         id="tagline-1"
-        class="js-tagline max-w-sm translate-y-4 font-body text-xl leading-snug opacity-0 transition-[opacity,transform] delay-[300ms] duration-700 ease-out data-[on]:opacity-100"
-      >
-        Full-stack thinking.
+        class="max-w-sm translate-y-4 font-body text-xl leading-snug opacity-0 transition-[opacity,transform] delay-250 duration-1000 ease-out data-[on]:opacity-100">
+        Full-stack strategy.
       </div>
       <div
         id="tagline-2"
-        class="mt-4 js-tagline max-w-sm translate-y-4 self-end font-body text-xl leading-snug opacity-0 transition-[opacity,transform] delay-[500ms] duration-700 ease-out data-[on]:opacity-100"
-      >
+        class="mt-4 max-w-sm translate-y-4 self-end font-body text-xl leading-snug opacity-0 transition-[opacity,transform] delay-500 duration-1000 ease-out data-[on]:opacity-100">
         <em>Full-scope execution.</em>
       </div>
       <div
         id="hero-cta"
-        class="mx-auto mt-12 opacity-0 transition-[opacity,transform] delay-700 duration-700 ease-out data-[on]:opacity-100"
-      >
+        class="mx-auto mt-12 opacity-0 transition-[opacity,transform] delay-750 duration-1000 ease-out data-[on]:opacity-100">
         <Button href="/contact" class="mt-3">Get in touch</Button>
       </div>
     </div>
@@ -45,8 +41,7 @@ import Layout from "../layouts/Layout.astro";
   <section class="py-12 sm:py-24" id="services">
     <div class="mb-2.5 flex items-baseline justify-between gap-4">
       <h2
-        class="font-body text-3xl leading-none font-black tracking-tight uppercase"
-      >
+        class="font-body text-3xl leading-none font-black tracking-tight uppercase">
         Services
       </h2>
       <span class="shrink-0 font-mono text-xs tracking-widest text-stone-500"
@@ -54,12 +49,12 @@ import Layout from "../layouts/Layout.astro";
       >
     </div>
     <span
-      class="js-rule block h-px w-0 bg-stone-500 transition-[width] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] data-[on]:w-full"
+      class="js-rule block h-px w-0 bg-stone-500 transition-[width] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] data-[on]:w-full"
     ></span>
     <div class="mt-6 divide-y divide-stone-500 *:py-12 sm:mt-10">
       {
         services.map((svc) => (
-          <div class="js-svc grid translate-y-5 grid-cols-1 gap-x-6 opacity-0 transition-[opacity,transform] duration-[550ms] data-[on]:translate-y-0 data-[on]:opacity-100 sm:grid-cols-[5fr_7fr] sm:items-start">
+          <div class="js-svc grid translate-y-5 grid-cols-1 gap-x-6 opacity-0 transition-[opacity,transform] duration-500 data-[on]:translate-y-0 data-[on]:opacity-100 sm:grid-cols-[5fr_7fr] sm:items-start">
             <div class="relative">
               <span class="self-top absolute -top-4 mb-1.5 block font-mono text-xs tracking-widest text-accent">
                 {svc.index}

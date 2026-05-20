@@ -10,23 +10,26 @@ const links = [
 ---
 
 <footer class="pt-4 pb-32">
-  <div class="grid h-8 grid-cols-3 items-center">
-    <Wordmark />
+  <div class="grid h-8 grid-cols-3 items-baseline">
+    <div class="col-span-3 flex justify-center sm:col-span-1 sm:justify-start">
+      <Wordmark />
+    </div>
     <div
-      class="text-center font-mono text-xs tracking-widest text-stone-500 uppercase">
+      class="hidden text-center font-mono text-xs tracking-widest text-stone-500 uppercase sm:block">
       Falls Church, VA
     </div>
-    <div class="justify-self-end font-mono text-xs text-stone-500 uppercase">
+    <div
+      class="hidden justify-self-end font-mono text-xs text-stone-500 uppercase sm:block">
       © 2026 Pearce Labs, LLC.
     </div>
   </div>
   <hr class="my-2 border-stone-500" aria-hidden="true" />
   <div
-    class="flex h-6 items-center justify-center gap-4 font-mono text-xs tracking-widest">
+    class="flex h-6 items-center justify-between gap-4 font-mono text-xs tracking-widest sm:justify-center">
     {
       links.map((link, i) => (
         <>
-          {i > 0 && <span class="text-accent">·</span>}
+          {i > 0 && <span class="mb-0.5 text-xl leading-0 text-accent">·</span>}
           <a
             href={link.href}
             class="text-stone-500 uppercase transition-colors duration-200 hover:text-accent">
@@ -35,5 +38,9 @@ const links = [
         </>
       ))
     }
+  </div>
+  <div
+    class="mt-12 w-full justify-center text-center font-mono text-xs text-stone-500 uppercase sm:hidden">
+    © 2026 Pearce Labs, LLC.
   </div>
 </footer>

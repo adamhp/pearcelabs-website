@@ -5,12 +5,11 @@ import { services } from "../constants";
 const { pathname } = Astro.url;
 ---
 
-<header class="py-4">
-  <div class="grid h-8 grid-cols-3 items-center">
+<header class="hidden py-4 sm:block">
+  <div class="grid h-8 grid-cols-3 items-baseline">
     <Wordmark />
     <div
-      class="text-center font-mono text-xs tracking-widest text-stone-500 uppercase"
-    >
+      class="hidden text-center font-mono text-xs tracking-widest text-stone-500 uppercase sm:block">
       Falls Church, VA
     </div>
     {
@@ -19,8 +18,7 @@ const { pathname } = Astro.url;
           <div class="font-mono text-xs tracking-widest text-stone-500 uppercase">
             <a
               class="transition-colors duration-200 hover:text-accent"
-              href="/"
-            >
+              href="/">
               ← Home
             </a>
           </div>
@@ -34,17 +32,14 @@ const { pathname } = Astro.url;
   </div>
   <hr class="my-2 border-stone-500" />
   <div
-    class="flex h-6 items-center justify-center font-mono text-xs tracking-widest text-stone-500 uppercase"
-  >
-    <div class="mx-auto flex items-center justify-between gap-4">
-      {
-        services.map((svc, i) => (
-          <>
-            {i > 0 && <div class="text-accent"> · </div>}
-            <div>{svc.abbrev}</div>
-          </>
-        ))
-      }
-    </div>
+    class="flex h-6 w-full items-center justify-center gap-4 overflow-hidden font-mono text-xs tracking-normal text-stone-500 uppercase sm:tracking-widest">
+    {
+      services.map((svc, i) => (
+        <>
+          {i > 0 && <div class="mb-0.5 text-xl leading-0 text-accent"> · </div>}
+          <div>{svc.abbrev}</div>
+        </>
+      ))
+    }
   </div>
 </header>

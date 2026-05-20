@@ -39,15 +39,16 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
       </p>
       <div class="mt-6">
         <span class={`${labelClass} mb-1.5 block`}>Book Directly</span>
-
-        <Button
-          as="a"
-          arrow={false}
-          data-cal-link="pearcelabs/intro"
-          data-cal-namespace="intro"
-          data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>
-          Schedule Intro Call
-        </Button>
+        <div class="flex w-full flex-row justify-center sm:justify-start">
+          <Button
+            as="a"
+            arrow={false}
+            data-cal-link="pearcelabs/intro"
+            data-cal-namespace="intro"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>
+            Schedule Intro Call
+          </Button>
+        </div>
       </div>
       <div class="mt-6">
         <span class={`${labelClass} mb-1.5 block`}>Email</span>
