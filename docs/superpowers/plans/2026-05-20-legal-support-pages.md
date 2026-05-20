@@ -350,14 +350,14 @@ import ContentLayout from "../layouts/ContentLayout.astro";
   <h2>Your Rights</h2>
   <p>
     You may request access to or deletion of your personal data at any time by
-    contacting us at <a href="mailto:hello@pearcelabs.com"
-      >hello@pearcelabs.com</a
+    contacting us at <a href="mailto:email@pearcelabs.com"
+      >email@pearcelabs.com</a
     >.
   </p>
 
   <h2>Contact</h2>
   <p>
-    <a href="mailto:hello@pearcelabs.com">hello@pearcelabs.com</a>
+    <a href="mailto:email@pearcelabs.com">email@pearcelabs.com</a>
   </p>
 </ContentLayout>
 ```
@@ -454,7 +454,7 @@ import ContentLayout from "../layouts/ContentLayout.astro";
 
   <h2>Contact</h2>
   <p>
-    <a href="mailto:hello@pearcelabs.com">hello@pearcelabs.com</a>
+    <a href="mailto:email@pearcelabs.com">email@pearcelabs.com</a>
   </p>
 </ContentLayout>
 ```
@@ -533,7 +533,7 @@ import ContentLayout from "../layouts/ContentLayout.astro";
 
   <h2>Contact</h2>
   <p>
-    Email: <a href="mailto:hello@pearcelabs.com">hello@pearcelabs.com</a><br />
+    Email: <a href="mailto:email@pearcelabs.com">email@pearcelabs.com</a><br />
     Phone: <a href="tel:+15717868962">(571) 786-8962</a>
   </p>
   <p>We typically respond within one business day.</p>

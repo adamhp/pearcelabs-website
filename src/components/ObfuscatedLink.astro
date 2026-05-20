@@ -1,0 +1,32 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  class?: string;
+}
+
+const { href, label, class: className } = Astro.props;
+
+// Encode as HTML entities so bots see char codes in the source, not plain text
+function htmlEncode(str: string): string {
+  return [...str].map((c) => `&#${c.charCodeAt(0)};`).join("");
+}
+
+// Store href as comma-separated char codes in a data attribute
+function charEncode(str: string): string {
+  return [...str].map((c) => c.charCodeAt(0)).join(",");
+}
+
+const encodedLabel = htmlEncode(label);
+const encodedHref = charEncode(href);
+---
+
+<a data-o={encodedHref} class={`js-obf-link${className ? ` ${className}` : ""}`} set:html={encodedLabel}></a>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>(".js-obf-link").forEach((el) => {
+    const raw = el.dataset.o;
+    if (!raw) return;
+    el.href = raw.split(",").map((n) => String.fromCharCode(+n)).join("");
+  });
+</script>

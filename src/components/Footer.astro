@@ -1,15 +1,23 @@
 ---
 import Wordmark from "./Wordmark.astro";
+
+const links = [
+  { label: "Contact", href: "/contact" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
+  { label: "Support", href: "/support" },
+];
 ---
 
-<footer class="py-4">
-  <div class="grid h-6 grid-cols-3 items-center">
+<footer class="pt-4 pb-32">
+  <div class="grid h-8 grid-cols-3 items-center">
     <Wordmark />
-    <span
+    <div
       class="text-center font-mono text-xs tracking-widest text-stone-500 uppercase"
-      >Falls Church, VA</span
     >
-    <div class="text-right font-mono text-xs text-stone-500">
+      Falls Church, VA
+    </div>
+    <div class="justify-self-end font-mono text-xs text-stone-500 uppercase">
       © 2026 Pearce Labs, LLC.
     </div>
   </div>
@@ -17,22 +25,18 @@ import Wordmark from "./Wordmark.astro";
   <div
     class="flex h-6 items-center justify-center gap-4 font-mono text-xs tracking-widest"
   >
-    <a
-      href="/privacy"
-      class="text-stone-500 uppercase transition-colors duration-200 hover:text-accent"
-      >Privacy</a
-    >
-    <span class="text-accent">·</span>
-    <a
-      href="/terms"
-      class="text-stone-500 uppercase transition-colors duration-200 hover:text-accent"
-      >Terms</a
-    >
-    <span class="text-accent">·</span>
-    <a
-      href="/support"
-      class="text-stone-500 uppercase transition-colors duration-200 hover:text-accent"
-      >Support</a
-    >
+    {
+      links.map((link, i) => (
+        <>
+          {i > 0 && <span class="text-accent">·</span>}
+          <a
+            href={link.href}
+            class="text-stone-500 uppercase transition-colors duration-200 hover:text-accent"
+          >
+            {link.label}
+          </a>
+        </>
+      ))
+    }
   </div>
 </footer>

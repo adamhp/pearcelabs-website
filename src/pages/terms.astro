@@ -1,13 +1,16 @@
 ---
 import ContentLayout from "../layouts/ContentLayout.astro";
+import ObfuscatedLink from "../components/ObfuscatedLink.astro";
 ---
 
 <ContentLayout
   title="Terms of Service — Pearce Labs"
-  description="Terms of service for Pearce Labs.">
+  description="Terms of service for Pearce Labs."
+>
   <h1>Terms of Service</h1>
   <p
-    class="mt-1 mb-8 font-mono text-xs tracking-widest text-stone-500 uppercase">
+    class="mt-1 mb-8 font-mono text-xs tracking-widest text-stone-500 uppercase"
+  >
     Effective May 20, 2026
   </p>
 
@@ -21,14 +24,15 @@ import ContentLayout from "../layouts/ContentLayout.astro";
 
   <h2>Payment</h2>
   <p>
-    Services are invoiced on a per-project or retainer basis. Payment is due
-    within 15 days of invoice unless otherwise agreed in writing.
+    Services are generally invoiced on a recurring, per-project, or retainer
+    basis. Specific payment terms and conditions for each engagement are defined
+    in a separate project agreement.
   </p>
 
   <h2>Intellectual Property</h2>
   <p>
-    Upon receipt of full payment, the client owns all deliverables produced
-    specifically for that engagement. Pearce Labs retains ownership of any
+    Intellectual property terms and conditions for each engagement are defined
+    in a separate project agreement. Pearce Labs retains ownership of any
     general tools, frameworks, or know-how developed independently of the
     project.
   </p>
@@ -36,8 +40,13 @@ import ContentLayout from "../layouts/ContentLayout.astro";
   <h2>Confidentiality</h2>
   <p>
     Both parties agree to keep the other's confidential information private.
-    Client information shared during an engagement will not be disclosed to
-    third parties.
+    Client information will not be disclosed to third parties except where
+    reasonably necessary to carry out the engagement — including use of
+    third-party tools and services such as email clients, project management
+    platforms, communication tools, and other software used in the ordinary
+    course of delivering the work. Any such third parties are expected to
+    handle information responsibly and in accordance with their own privacy
+    practices.
   </p>
 
   <h2>Limitation of Liability</h2>
@@ -55,6 +64,6 @@ import ContentLayout from "../layouts/ContentLayout.astro";
 
   <h2>Contact</h2>
   <p>
-    <a href="mailto:hello@pearcelabs.com">hello@pearcelabs.com</a>
+    <ObfuscatedLink href="mailto:email@pearcelabs.com" label="email@pearcelabs.com" />
   </p>
 </ContentLayout>

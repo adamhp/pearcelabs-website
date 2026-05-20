@@ -1,0 +1,185 @@
+---
+import ObfuscatedLink from "./ObfuscatedLink.astro";
+
+interface Props {
+  sectionLabel?: string;
+}
+const { sectionLabel } = Astro.props;
+
+const inputClass =
+  "bg-white/50 p-2 border-0 rounded-xs py-2 font-body text-sm text-ink outline-none transition-colors duration-200 focus:border-accent appearance-none rounded-none placeholder:text-stone-500 w-full";
+
+const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
+---
+
+<section class="pt-12 pb-32" id="contact">
+  <div class="mb-2.5 flex items-baseline justify-between gap-4">
+    <h2
+      class="js-contact-hed translate-y-6 font-body text-3xl leading-none font-black tracking-tight uppercase opacity-0 transition-[opacity,transform] duration-[750ms] ease-[cubic-bezier(0.16,1,0.3,1)] data-[on]:translate-y-0 data-[on]:opacity-100"
+    >
+      Contact us
+    </h2>
+    {
+      sectionLabel && (
+        <span class="shrink-0 font-mono text-xs tracking-widest text-stone-500">
+          {sectionLabel}
+        </span>
+      )
+    }
+  </div>
+  <span
+    class="js-contact-rule block h-px w-0 bg-stone-500 transition-[width] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] data-[on]:w-full"
+  ></span>
+  <div
+    class="js-contact-body mt-6 grid grid-cols-1 gap-8 opacity-0 transition-opacity delay-200 duration-[650ms] data-[on]:opacity-100 sm:gap-16 md:grid-cols-[4fr_6fr]"
+  >
+    <div>
+      <p class="text-base leading-relaxed">
+        Based in Falls Church, VA. Available to businesses across the DC metro
+        area and beyond.
+      </p>
+      <div class="mt-6">
+        <span class={`${labelClass} mb-1.5 block`}>Book Directly</span>
+
+        <a
+          data-cal-link="pearcelabs/intro"
+          data-cal-namespace="intro"
+          data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+          class="group self-end inline-flex items-center gap-2 font-mono text-xs font-medium tracking-[0.13em] uppercase text-paper bg-ink border border-ink whitespace-nowrap cursor-pointer py-[0.8rem] px-4 hover:bg-accent hover:border-accent"
+        >
+          Schedule Intro Call
+        </a>
+      </div>
+      <div class="mt-6">
+        <span class={`${labelClass} mb-1.5 block`}>Email</span>
+        <ObfuscatedLink
+          href="mailto:email@pearcelabs.com"
+          label="email@pearcelabs.com"
+          class="pb-0.5 font-mono text-sm text-ink no-underline transition-colors duration-200 hover:border-accent hover:text-accent sm:text-base"
+        />
+      </div>
+      <div class="mt-6">
+        <span class={`${labelClass} mb-1.5 block`}>Call/Text</span>
+        <ObfuscatedLink
+          href="sms:+15717868962"
+          label="(571) 786-8962"
+          class="pb-0.5 font-mono text-sm text-ink no-underline transition-colors duration-200 hover:border-accent hover:text-accent sm:text-base"
+        />
+      </div>
+    </div>
+
+    <form
+      class="relative flex flex-col gap-4"
+      id="contact-form"
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      novalidate
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="hidden">
+        <label>Don't fill this out: <input name="bot-field" /></label>
+      </p>
+      <div class="js-field flex flex-col gap-1.5">
+        <label class={labelClass} for="f-name">Name</label>
+        <input
+          class={inputClass}
+          type="text"
+          id="f-name"
+          name="name"
+          placeholder="Your name"
+          required
+          autocomplete="name"
+        />
+      </div>
+      <div class="js-field flex flex-col gap-1.5">
+        <label class={labelClass} for="f-email">Email</label>
+        <input
+          class={inputClass}
+          type="email"
+          id="f-email"
+          name="email"
+          placeholder="your@email.com"
+          required
+          autocomplete="email"
+        />
+      </div>
+      <div class="js-field flex flex-col gap-1.5">
+        <label class={labelClass} for="f-msg">Message</label>
+        <textarea
+          class={`${inputClass} resize-none min-h-20`}
+          id="f-msg"
+          name="message"
+          placeholder="Tell me what you're working on"
+          rows={3}
+          required></textarea>
+      </div>
+      <button
+        type="submit"
+        class="group mt-3 self-end inline-flex items-center gap-2 font-mono text-xs font-medium tracking-[0.13em] uppercase text-paper bg-ink border border-ink whitespace-nowrap cursor-pointer py-[0.8rem] px-4 hover:bg-accent hover:border-accent"
+      >
+        Send message <span
+          class="arr inline-block transition-transform duration-200 group-hover:translate-x-[3px]"
+          >→</span
+        >
+      </button>
+      <div
+        class="pointer-events-none absolute inset-0 flex items-center font-mono text-sm tracking-wider text-ink opacity-0 transition-opacity duration-500"
+        id="form-success"
+      >
+        Message received — we'll be in touch shortly.
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        (e.target as HTMLElement).dataset.on = "";
+        io.unobserve(e.target);
+      });
+    },
+    { threshold: 0.12 },
+  );
+
+  [".js-contact-rule", ".js-contact-hed", ".js-contact-body"].forEach((sel) => {
+    const el = document.querySelector<HTMLElement>(sel);
+    if (el) io.observe(el);
+  });
+
+  document
+    .getElementById("contact-form")
+    ?.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const form = e.currentTarget as HTMLFormElement;
+      const btn = form.querySelector<HTMLButtonElement>(".btn")!;
+      btn.textContent = "Sending…";
+      btn.style.pointerEvents = "none";
+      try {
+        await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(
+            new FormData(form) as unknown as Record<string, string>,
+          ).toString(),
+        });
+        btn.textContent = "Sent ✓";
+        btn.classList.add("btn--sent");
+        const successEl = document.getElementById("form-success");
+        if (successEl) {
+          successEl.style.opacity = "1";
+          successEl.style.pointerEvents = "auto";
+        }
+        form
+          .querySelectorAll<HTMLElement>(".js-field")
+          .forEach((f) => (f.style.visibility = "hidden"));
+      } catch {
+        btn.textContent = "Send message";
+        btn.style.pointerEvents = "";
+      }
+    });
+</script>
