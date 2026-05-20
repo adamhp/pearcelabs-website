@@ -1,0 +1,35 @@
+---
+import Wordmark from "./Wordmark.astro";
+---
+
+<footer class="py-4">
+  <div class="flex h-6 items-center justify-between gap-4">
+    <Wordmark />
+    <span class="font-mono text-xs tracking-widest text-stone-500 uppercase"
+      >Falls Church, VA</span
+    >
+    <span class="font-mono text-xs text-stone-500">© 2026 Pearce Labs, LLC.</span>
+  </div>
+  <hr class="my-2 border-stone-500" />
+  <div
+    class="flex h-6 items-center justify-center gap-4 font-mono text-xs tracking-widest"
+  >
+    <a
+      href="/privacy"
+      class="text-stone-500 uppercase transition-colors duration-200 hover:text-accent"
+      >Privacy</a
+    >
+    <span class="text-accent">·</span>
+    <a
+      href="/terms"
+      class="text-stone-500 uppercase transition-colors duration-200 hover:text-accent"
+      >Terms</a
+    >
+    <span class="text-accent">·</span>
+    <a
+      href="/support"
+      class="text-stone-500 uppercase transition-colors duration-200 hover:text-accent"
+      >Support</a
+    >
+  </div>
+</footer>
