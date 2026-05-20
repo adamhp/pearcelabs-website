@@ -21,12 +21,19 @@ const encodedLabel = htmlEncode(label);
 const encodedHref = charEncode(href);
 ---
 
-<a data-o={encodedHref} class={`js-obf-link${className ? ` ${className}` : ""}`} set:html={encodedLabel}></a>
+<a
+  data-o={encodedHref}
+  class={`js-obf-link${className ? ` ${className}` : ""}`}
+  set:html={encodedLabel}
+/>
 
 <script>
   document.querySelectorAll<HTMLAnchorElement>(".js-obf-link").forEach((el) => {
     const raw = el.dataset.o;
     if (!raw) return;
-    el.href = raw.split(",").map((n) => String.fromCharCode(+n)).join("");
+    el.href = raw
+      .split(",")
+      .map((n) => String.fromCharCode(+n))
+      .join("");
   });
 </script>

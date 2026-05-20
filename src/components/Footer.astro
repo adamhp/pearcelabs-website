@@ -13,8 +13,7 @@ const links = [
   <div class="grid h-8 grid-cols-3 items-center">
     <Wordmark />
     <div
-      class="text-center font-mono text-xs tracking-widest text-stone-500 uppercase"
-    >
+      class="text-center font-mono text-xs tracking-widest text-stone-500 uppercase">
       Falls Church, VA
     </div>
     <div class="justify-self-end font-mono text-xs text-stone-500 uppercase">
@@ -23,16 +22,14 @@ const links = [
   </div>
   <hr class="my-2 border-stone-500" aria-hidden="true" />
   <div
-    class="flex h-6 items-center justify-center gap-4 font-mono text-xs tracking-widest"
-  >
+    class="flex h-6 items-center justify-center gap-4 font-mono text-xs tracking-widest">
     {
       links.map((link, i) => (
         <>
           {i > 0 && <span class="text-accent">·</span>}
           <a
             href={link.href}
-            class="text-stone-500 uppercase transition-colors duration-200 hover:text-accent"
-          >
+            class="text-stone-500 uppercase transition-colors duration-200 hover:text-accent">
             {link.label}
           </a>
         </>

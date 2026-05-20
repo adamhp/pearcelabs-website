@@ -1,0 +1,48 @@
+---
+interface Props {
+  href?: string;
+  as?: "a" | "button";
+  type?: "submit" | "button" | "reset";
+  arrow?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  href,
+  as: tag,
+  type = "submit",
+  arrow = true,
+  class: className,
+  ...rest
+} = Astro.props;
+const isLink = tag === "a" || href !== undefined;
+const btnClass = [
+  "group self-end inline-flex items-center gap-2 font-mono rounded-sm text-xs font-medium tracking-[0.13em] uppercase text-paper bg-ink border border-ink whitespace-nowrap cursor-pointer py-[0.8rem] px-4 hover:bg-accent hover:border-accent transition-all",
+  className,
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+{
+  isLink ? (
+    <a href={href} class={btnClass} {...rest}>
+      <slot />
+      {arrow && (
+        <span class="arr inline-block transition-transform duration-200 group-hover:translate-x-[3px]">
+          →
+        </span>
+      )}
+    </a>
+  ) : (
+    <button type={type} class={btnClass} {...rest}>
+      <slot />
+      {arrow && (
+        <span class="arr inline-block transition-transform duration-200 group-hover:translate-x-[3px]">
+          →
+        </span>
+      )}
+    </button>
+  )
+}
