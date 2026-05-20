@@ -1,3 +1,6 @@
+export const tagline1 = "Full-stack solutions.";
+export const tagline2 = "Full-scope execution.";
+
 export const services = [
   {
     index: "01",

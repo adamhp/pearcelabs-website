@@ -4,7 +4,7 @@ import CalBookingButton from "../components/CalBookingButton.astro";
 import ContactSection from "../components/ContactSection.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import { services } from "../constants";
+import { services, tagline1, tagline2 } from "../constants";
 
 import Layout from "../layouts/Layout.astro";
 ---
@@ -23,12 +23,12 @@ import Layout from "../layouts/Layout.astro";
       <div
         id="tagline-1"
         class="max-w-sm translate-y-4 font-body text-xl leading-snug opacity-0 transition-[opacity,transform] delay-250 duration-1000 ease-out data-[on]:opacity-100">
-        Full-stack strategy.
+        {tagline1}
       </div>
       <div
         id="tagline-2"
         class="mt-4 max-w-sm translate-y-4 self-end font-body text-xl leading-snug opacity-0 transition-[opacity,transform] delay-500 duration-1000 ease-out data-[on]:opacity-100">
-        <em>Full-scope execution.</em>
+        <em>{tagline2}</em>
       </div>
       <div
         id="hero-cta"
@@ -97,6 +97,13 @@ import Layout from "../layouts/Layout.astro";
         if (el) el.dataset.on = "";
       }, delay);
     });
+
+    // Hero CTA tracking
+    document
+      .querySelector<HTMLAnchorElement>("#hero-cta a")
+      ?.addEventListener("click", () => {
+        window.posthog?.capture("hero_cta_clicked");
+      });
 
     // Scroll-triggered reveals
     const io = new IntersectionObserver(

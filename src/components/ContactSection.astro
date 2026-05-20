@@ -141,6 +141,13 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
     if (el) io.observe(el);
   });
 
+  // Schedule call tracking
+  document
+    .querySelector<HTMLElement>("[data-cal-link]")
+    ?.addEventListener("click", () => {
+      window.posthog?.capture("schedule_call_clicked");
+    });
+
   document
     .getElementById("contact-form")
     ?.addEventListener("submit", async function (e) {
@@ -167,9 +174,12 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
         form
           .querySelectorAll<HTMLElement>(".js-field")
           .forEach((f) => (f.style.visibility = "hidden"));
-      } catch {
+        window.posthog?.capture("contact_form_submitted");
+      } catch (err) {
         btn.textContent = "Send message";
         btn.style.pointerEvents = "";
+        window.posthog?.capture("contact_form_error");
+        window.posthog?.captureException(err);
       }
     });
 </script>
