@@ -1,4 +1,5 @@
 ---
+import Footer from "../components/Footer.astro";
 import Wordmark from "../components/Wordmark.astro";
 import Layout from "../layouts/Layout.astro";
 
@@ -61,7 +62,7 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
     <div
       class="flex h-6 items-center justify-center font-mono text-xs tracking-widest text-stone-500 uppercase"
     >
-      <div class="flex items-center justify-between gap-4 mx-auto">
+      <div class="mx-auto flex items-center justify-between gap-4">
         {
           services.map((svc, i) => (
             <>
@@ -219,15 +220,7 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
   </section>
 
   <!-- FOOTER -->
-  <footer class="py-4 flex h-6 items-center justify-between gap-4">
-    <Wordmark />
-    <span class="font-mono text-xs tracking-widest text-stone-500 uppercase"
-      >Falls Church, VA</span
-    >
-    <span class="font-mono text-xs text-stone-500"
-      >© 2026 Pearce Labs, LLC.</span
-    >
-  </footer>
+  <Footer />
 
   <script>
     // Rules animate in on load
@@ -243,6 +236,11 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
       ] as [string, string, number][]
     ).forEach(([sel, cls, delay]) => {
       setTimeout(() => document.querySelector(sel)?.classList.add(cls), delay);
+    });
+
+    // CTA click tracking
+    document.querySelector(".js-hero-cta")?.addEventListener("click", () => {
+      (window as any).posthog?.capture("cta_clicked", { location: "hero" });
     });
 
     // Scroll-triggered reveals
@@ -277,6 +275,27 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
       }
     });
 
+    // Section view tracking (once per session)
+    const sectionIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const id = (e.target as HTMLElement).id;
+          if (id === "services") {
+            (window as any).posthog?.capture("service_section_viewed");
+          } else if (id === "contact") {
+            (window as any).posthog?.capture("contact_section_viewed");
+          }
+          sectionIo.unobserve(e.target);
+        });
+      },
+      { threshold: 0.12 },
+    );
+    ["services", "contact"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) sectionIo.observe(el);
+    });
+
     // Contact form
     document
       .getElementById("contact-form")
@@ -294,6 +313,7 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
               new FormData(form) as unknown as Record<string, string>,
             ).toString(),
           });
+          (window as any).posthog?.capture("contact_form_submitted");
           btn.textContent = "Sent ✓";
           btn.classList.add("btn--sent");
           const successEl = document.getElementById("form-success");
@@ -304,7 +324,9 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
           form
             .querySelectorAll<HTMLElement>(".js-field")
             .forEach((f) => (f.style.visibility = "hidden"));
-        } catch {
+        } catch (err) {
+          (window as any).posthog?.captureException(err);
+          (window as any).posthog?.capture("contact_form_error");
           btn.textContent = "Send message";
           btn.style.pointerEvents = "";
         }
