@@ -9,9 +9,9 @@ interface Props {
 const { sectionLabel } = Astro.props;
 
 const inputClass =
-  "bg-white/50 p-2 border-0 rounded-xs py-2 font-body text-sm text-ink outline-none transition-colors duration-200 focus:border-accent appearance-none rounded-none placeholder:text-stone-500 w-full";
+  "bg-white/50 p-2 border-0 rounded-xs py-2 font-body text-sm text-ink outline-none transition-colors duration-200 focus:border-accent appearance-none rounded-none placeholder:text-stone-600 w-full user-invalid:border user-invalid:border-red-500";
 
-const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
+const labelClass = "font-mono text-xs tracking-widest text-stone-600 uppercase";
 ---
 
 <section class="pt-12 pb-32" id="contact">
@@ -42,7 +42,6 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
         <span class={`${labelClass} mb-1.5 block`}>Book Directly</span>
         <div class="flex w-full flex-row justify-center sm:justify-start">
           <Button
-            href="/contact"
             arrow={false}
             data-cal-link="pearcelabs/intro"
             data-cal-namespace="intro"
@@ -75,8 +74,7 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
       name="contact"
       method="POST"
       data-netlify="true"
-      netlify-honeypot="bot-field"
-      novalidate>
+      netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="contact" />
       <p class="hidden">
         <label>Don't fill this out: <input name="bot-field" /></label>

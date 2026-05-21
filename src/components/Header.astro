@@ -9,13 +9,13 @@ const { pathname } = Astro.url;
   <div class="grid h-8 grid-cols-3 items-baseline">
     <Wordmark />
     <div
-      class="hidden text-center font-mono text-xs tracking-widest text-stone-500 uppercase sm:block">
+      class="hidden text-center font-mono text-xs tracking-widest text-stone-600 uppercase sm:block">
       Falls Church, VA
     </div>
     {
       pathname !== "/" ? (
         <div class="flex flex-row items-center justify-self-end">
-          <div class="font-mono text-xs tracking-widest text-stone-500 uppercase">
+          <div class="font-mono text-xs tracking-widest text-stone-600 uppercase">
             <a
               class="transition-colors duration-200 hover:text-accent"
               href="/">
@@ -24,7 +24,7 @@ const { pathname } = Astro.url;
           </div>
         </div>
       ) : (
-        <div class="justify-self-end font-mono text-xs tracking-widest text-stone-500 uppercase">
+        <div class="justify-self-end font-mono text-xs tracking-widest text-stone-600 uppercase">
           Est. 2025
         </div>
       )
@@ -32,7 +32,7 @@ const { pathname } = Astro.url;
   </div>
   <hr class="my-2 border-stone-500" />
   <div
-    class="flex h-6 w-full items-center justify-center gap-4 overflow-hidden font-mono text-xs tracking-normal text-stone-500 uppercase sm:tracking-widest">
+    class="flex h-6 w-full items-center justify-center gap-4 overflow-hidden font-mono text-xs tracking-normal text-stone-600 uppercase sm:tracking-widest">
     {
       services.map((svc, i) => (
         <>
