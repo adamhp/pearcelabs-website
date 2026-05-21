@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import PostHog from "../components/posthog.astro";
+import { email, phoneTel } from "../constants";
 
 interface Props {
   title?: string;
@@ -25,8 +26,8 @@ const jsonLd = {
   description:
     "Digital services for small businesses in Falls Church, VA and the DC metro area.",
   url: siteUrl,
-  telephone: "+15717868962",
-  email: "email@pearcelabs.com",
+  telephone: phoneTel,
+  email: email,
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",

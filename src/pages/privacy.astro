@@ -1,6 +1,7 @@
 ---
 import ContentLayout from "../layouts/ContentLayout.astro";
 import ObfuscatedLink from "../components/ObfuscatedLink.astro";
+import { email } from "../constants";
 ---
 
 <ContentLayout
@@ -47,17 +48,11 @@ import ObfuscatedLink from "../components/ObfuscatedLink.astro";
   <h2>Your Rights</h2>
   <p>
     You may request access to or deletion of your personal data at any time by
-    contacting us at <ObfuscatedLink
-      href="mailto:email@pearcelabs.com"
-      label="email@pearcelabs.com"
-    />.
+    contacting us at <ObfuscatedLink href={`mailto:${email}`} label={email} />.
   </p>
 
   <h2>Contact</h2>
   <p>
-    <ObfuscatedLink
-      href="mailto:email@pearcelabs.com"
-      label="email@pearcelabs.com"
-    />
+    <ObfuscatedLink href={`mailto:${email}`} label={email} />
   </p>
 </ContentLayout>

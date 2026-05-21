@@ -1,3 +1,7 @@
+export const email = "email@pearcelabs.com";
+export const phoneDisplay = "(571) 786-8962";
+export const phoneTel = "+15717868962";
+
 export const tagline1 = "Full-stack solutions.";
 export const tagline2 = "Full-scope execution.";
 

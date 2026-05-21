@@ -59,8 +59,10 @@
       }),
       (e.__SV = 1));
   })(document, window.posthog || []);
-  posthog.init(apiKey || "", {
-    api_host: apiHost || "",
-    defaults: "2026-01-30",
-  });
+  if (apiKey && apiHost) {
+    posthog.init(apiKey, {
+      api_host: apiHost,
+      defaults: "2026-01-30",
+    });
+  }
 </script>

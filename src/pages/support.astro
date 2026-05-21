@@ -1,6 +1,7 @@
 ---
 import ContentLayout from "../layouts/ContentLayout.astro";
 import ObfuscatedLink from "../components/ObfuscatedLink.astro";
+import { email, phoneDisplay, phoneTel } from "../constants";
 ---
 
 <ContentLayout
@@ -41,11 +42,8 @@ import ObfuscatedLink from "../components/ObfuscatedLink.astro";
 
   <h2>Contact</h2>
   <p>
-    Email: <ObfuscatedLink
-      href="mailto:email@pearcelabs.com"
-      label="email@pearcelabs.com"
-    /><br />
-    Phone: <ObfuscatedLink href="tel:+15717868962" label="(571) 786-8962" />
+    Email: <ObfuscatedLink href={`mailto:${email}`} label={email} /><br />
+    Phone: <ObfuscatedLink href={`tel:${phoneTel}`} label={phoneDisplay} />
   </p>
   <p>We typically respond within one business day.</p>
 </ContentLayout>
