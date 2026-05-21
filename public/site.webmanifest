@@ -1,6 +1,7 @@
 {
   "name": "Pearce Labs",
   "short_name": "Pearce Labs",
+  "start_url": "/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +16,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#F5F0E8",
+  "background_color": "#F5F0E8",
   "display": "standalone"
 }
