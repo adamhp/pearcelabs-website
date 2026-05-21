@@ -22,7 +22,7 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
     </h2>
     {
       sectionLabel && (
-        <span class="shrink-0 font-mono text-xs tracking-widest text-stone-500">
+        <span class="shrink-0 font-mono text-xs tracking-widest text-stone-600">
           {sectionLabel}
         </span>
       )
@@ -42,7 +42,7 @@ const labelClass = "font-mono text-xs tracking-widest text-stone-500 uppercase";
         <span class={`${labelClass} mb-1.5 block`}>Book Directly</span>
         <div class="flex w-full flex-row justify-center sm:justify-start">
           <Button
-            as="a"
+            href="/contact"
             arrow={false}
             data-cal-link="pearcelabs/intro"
             data-cal-namespace="intro"
