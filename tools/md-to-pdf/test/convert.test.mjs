@@ -21,7 +21,7 @@ test('exits with error when input file does not exist', () => {
   assert.ok(result.stderr.includes('Error:'), `expected "Error:" in stderr, got: ${result.stderr}`);
 });
 
-test('converts markdown to PDF', { timeout: 60000 }, () => {
+test('converts markdown to PDF', { timeout: 60000, concurrency: false }, () => {
   const tmpInput = path.join(os.tmpdir(), `test-${Date.now()}.md`);
   const tmpOutput = path.join(os.tmpdir(), `test-${Date.now()}.pdf`);
 
@@ -57,7 +57,7 @@ Some additional detail paragraph.
   }
 });
 
-test('defaults output path to input filename with .pdf extension', { timeout: 60000 }, () => {
+test('defaults output path to input filename with .pdf extension', { timeout: 60000, concurrency: false }, () => {
   const tmpInput = path.join(os.tmpdir(), `test-${Date.now()}.md`);
   const expectedOutput = tmpInput.replace(/\.md$/, '.pdf');
 
