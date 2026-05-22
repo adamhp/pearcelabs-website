@@ -16,8 +16,9 @@ test('exits with error when no input file is given', () => {
 });
 
 test('exits with error when input file does not exist', () => {
-  const result = spawnSync('node', [convertScript, '/tmp/nonexistent.md'], { encoding: 'utf8' });
+  const result = spawnSync('node', [convertScript, '/tmp/nonexistent-pearcelabs-test.md'], { encoding: 'utf8' });
   assert.notEqual(result.status, 0);
+  assert.ok(result.stderr.includes('Error:'), `expected "Error:" in stderr, got: ${result.stderr}`);
 });
 
 test('converts markdown to PDF', { timeout: 60000 }, () => {
