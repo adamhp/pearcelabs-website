@@ -1,9 +1,10 @@
-function esc(str) {
+export function esc(str) {
   return String(str)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 export function buildHtml({ title, client, date, bodyHtml, css }) {
@@ -11,6 +12,7 @@ export function buildHtml({ title, client, date, bodyHtml, css }) {
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <title>${esc(title)}</title>
   <style>${css}</style>
 </head>
 <body>

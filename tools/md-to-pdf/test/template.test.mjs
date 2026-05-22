@@ -40,3 +40,21 @@ test('buildHtml handles empty frontmatter fields without throwing', () => {
   const html = buildHtml({ title: '', client: '', date: '', bodyHtml: '', css: '' });
   assert.ok(html.startsWith('<!DOCTYPE html>'));
 });
+
+test('buildHtml escapes HTML special characters in title, client, and date', () => {
+  const html = buildHtml({
+    title: '<b>"Hello" & World</b>',
+    client: 'A & B Corp',
+    date: '2026 > 2025',
+    bodyHtml: '<p>Raw body</p>',
+    css: '',
+  });
+  // special chars in user fields must be escaped
+  assert.ok(html.includes('&lt;b&gt;'), 'title < and > should be escaped');
+  assert.ok(html.includes('&amp;'), 'ampersands should be escaped');
+  assert.ok(html.includes('&quot;'), 'double quotes should be escaped');
+  // body HTML must NOT be escaped (it's already rendered HTML)
+  assert.ok(html.includes('<p>Raw body</p>'), 'bodyHtml should be inserted raw');
+  // raw unescaped < from title must NOT appear in cover
+  assert.ok(!html.includes('<b>'), 'raw <b> tag from title must not appear unescaped');
+});
