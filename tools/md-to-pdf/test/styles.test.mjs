@@ -17,6 +17,9 @@ test('buildCss embeds Schibsted Grotesk font', () => {
 test('buildCss embeds IBM Plex Mono font', () => {
   const css = buildCss();
   assert.ok(css.includes('IBM Plex Mono'));
+  // verify the font is actually embedded, not just referenced
+  const dataUriCount = (css.match(/data:font\/woff2;base64,/g) ?? []).length;
+  assert.ok(dataUriCount >= 2, `expected at least 2 data URIs (one per font family), got ${dataUriCount}`);
 });
 
 test('buildCss includes branding color tokens', () => {

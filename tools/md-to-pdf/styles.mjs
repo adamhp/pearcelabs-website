@@ -44,6 +44,7 @@ body {
 
 /* ── Cover page ─────────────────────────────────── */
 .cover {
+  break-after: page;
   page-break-after: always;
   height: 100vh;
   display: flex;
@@ -180,7 +181,8 @@ body {
   padding: 1rem;
   margin: 1rem 0;
   border-radius: 4px;
-  overflow-x: hidden;
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
 .prose pre code {
