@@ -1,4 +1,25 @@
-<script async src="https://js.stripe.com/v3/pricing-table.js"></script>
-<stripe-pricing-table pricing-table-id="prctbl_1Tb7UcP8tRu5PcQz6UMZlLUo"
-publishable-key="pk_live_51RWkZlP8tRu5PcQzDCKqJpOPFomSr7R4qJaCjereNkrR5h6CelbBD7vkGMFBt7h07DBHnCkQy0FwuP8Z7jCrbjjg00bPmCGZIM">
-</stripe-pricing-table>
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Pricing — Pearce Labs"
+  description="Simple, transparent pricing for software development, AI implementation, and consulting services from Pearce Labs.">
+  <Header />
+  <main class="py-12">
+    <h1 class="mb-2 text-center font-body text-4xl font-black tracking-tighter text-ink sm:text-5xl">
+      Pricing
+    </h1>
+    <p class="mb-10 text-center font-body text-lg text-ink/60">
+      Choose the plan that fits your project.
+    </p>
+    <script async src="https://js.stripe.com/v3/pricing-table.js" is:inline></script>
+    <stripe-pricing-table
+      pricing-table-id="prctbl_1Tb7UcP8tRu5PcQz6UMZlLUo"
+      publishable-key="pk_live_51RWkZlP8tRu5PcQzDCKqJpOPFomSr7R4qJaCjereNkrR5h6CelbBD7vkGMFBt7h07DBHnCkQy0FwuP8Z7jCrbjjg00bPmCGZIM"
+    ></stripe-pricing-table>
+  </main>
+  <Footer />
+</Layout>
