@@ -1,3 +1,8 @@
+[[redirects]]
+  from = "/portal"
+  to = "https://billing.stripe.com/p/login/4gMbJ30gOg6Yes338daR200"
+  status = 301
+
 [[headers]]
   for = "/_astro/*"
   [headers.values]

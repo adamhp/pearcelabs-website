@@ -7,7 +7,8 @@ html {
 @theme {
   --color-ink:    #0C0C0A;
   --color-paper:  #F7F6F2;
-  --color-accent: oklch(47.3% 0.137 46.201);
+  /* #973c00 */
+  --color-accent: oklch(47.3% 0.137 46.201); 
   --font-body:    'Schibsted Grotesk', sans-serif;
   --font-mono:    'IBM Plex Mono', monospace;
 }
