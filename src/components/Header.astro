@@ -4,11 +4,30 @@ import { services } from "../constants";
 const { pathname } = Astro.url;
 ---
 
-<header class="hidden py-4 sm:block">
-  <div class="grid h-8 grid-cols-3 items-center">
+<header class="py-4">
+  <!-- Mobile: simplified two-column header -->
+  <div class="flex h-8 items-center justify-between sm:hidden">
+    <Wordmark />
+    {
+      pathname !== "/" ? (
+        <a
+          class="font-mono text-xs tracking-widest text-stone-600 uppercase transition-colors duration-200 hover:text-accent"
+          href="/">
+          ← Home
+        </a>
+      ) : (
+        <span class="font-mono text-xs tracking-widest text-stone-600 uppercase">
+          Est. 2025
+        </span>
+      )
+    }
+  </div>
+
+  <!-- Desktop: full three-column header -->
+  <div class="hidden h-8 grid-cols-3 items-center sm:grid">
     <Wordmark />
     <div
-      class="hidden text-center font-mono text-xs tracking-widest text-stone-600 uppercase sm:block">
+      class="text-center font-mono text-xs tracking-widest text-stone-600 uppercase">
       Falls Church, VA
     </div>
     {
@@ -29,9 +48,10 @@ const { pathname } = Astro.url;
       )
     }
   </div>
+
   <hr class="my-2 border-stone-500" />
   <div
-    class="flex h-6 w-full items-center justify-center gap-4 overflow-hidden font-mono text-xs tracking-normal text-stone-600 uppercase sm:tracking-widest">
+    class="flex h-6 w-full items-center justify-center gap-1.5 overflow-hidden font-mono text-xs tracking-normal text-stone-600 uppercase sm:gap-4 sm:tracking-widest">
     {
       services.map((svc, i) => (
         <>

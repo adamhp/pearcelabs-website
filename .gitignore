@@ -8,4 +8,5 @@ dist/
 .claude/
 posthog-setup-report.md
 tools/md-to-pdf/fixtures/*.pdf
-
+.pnpm-store/*
+.playwright-mcp/
