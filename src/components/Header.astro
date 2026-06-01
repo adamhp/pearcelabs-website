@@ -10,11 +10,13 @@ const { pathname } = Astro.url;
     <Wordmark />
     {
       pathname !== "/" ? (
-        <a
-          class="font-mono text-xs tracking-widest text-stone-600 uppercase transition-colors duration-200 hover:text-accent"
-          href="/">
-          ← Home
-        </a>
+        <nav aria-label="Site navigation">
+          <a
+            class="font-mono text-xs tracking-widest text-stone-600 uppercase transition-colors duration-200 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            href="/">
+            ← Home
+          </a>
+        </nav>
       ) : (
         <span class="font-mono text-xs tracking-widest text-stone-600 uppercase">
           Est. 2025
@@ -32,15 +34,13 @@ const { pathname } = Astro.url;
     </div>
     {
       pathname !== "/" ? (
-        <div class="flex flex-row items-center justify-self-end">
-          <div class="font-mono text-xs tracking-widest text-stone-600 uppercase">
-            <a
-              class="transition-colors duration-200 hover:text-accent"
-              href="/">
-              ← Home
-            </a>
-          </div>
-        </div>
+        <nav aria-label="Site navigation" class="flex flex-row items-center justify-self-end">
+          <a
+            class="font-mono text-xs tracking-widest text-stone-600 uppercase transition-colors duration-200 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            href="/">
+            ← Home
+          </a>
+        </nav>
       ) : (
         <div class="justify-self-end font-mono text-xs tracking-widest text-stone-600 uppercase">
           Est. 2025

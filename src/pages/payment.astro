@@ -7,7 +7,8 @@ import Layout from "../layouts/Layout.astro";
 <Layout
   title="Pricing — Pearce Labs"
   description="Simple, transparent pricing for software development, AI implementation, and consulting services from Pearce Labs.">
-  <main class="my-40 items-center justify-center">
+  <main id="main-content" class="my-40 items-center justify-center">
+    <h1 class="sr-only">Pricing</h1>
     <script async src="https://js.stripe.com/v3/pricing-table.js" is:inline></script>
     <stripe-pricing-table
       pricing-table-id="prctbl_1Tb7UcP8tRu5PcQz6UMZlLUo"

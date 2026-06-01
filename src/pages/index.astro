@@ -12,9 +12,9 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Pearce Labs | Software Development & Tech Consulting">
   <!-- HEADER -->
   <Header />
-  <main>
+  <main id="main-content">
     <!-- HERO -->
-    <section class="py-12">
+    <section class="py-12" aria-labelledby="hero">
       <h1
         id="hero"
         class="py-5 text-center font-body text-5xl leading-none font-black tracking-tighter text-ink opacity-0 transition-[opacity,transform] duration-[850ms] ease-out data-[on]:opacity-100 sm:py-10 sm:text-7xl">
@@ -39,9 +39,10 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </section>
     <!-- SERVICES -->
-    <section class="py-12 sm:py-24" id="services">
+    <section class="py-12 sm:py-24" id="services" aria-labelledby="services-heading">
       <div class="mb-2.5 flex items-baseline justify-between gap-4">
         <h2
+          id="services-heading"
           class="font-body text-3xl leading-none font-black tracking-tight uppercase">
           Services
         </h2>

@@ -18,7 +18,7 @@ const {
 } = Astro.props;
 const isLink = tag === "a" || href !== undefined;
 const btnClass = [
-  "group self-end inline-flex items-center gap-2 font-mono rounded-sm text-xs font-medium tracking-[0.13em] uppercase text-paper bg-ink border border-ink whitespace-nowrap cursor-pointer py-[0.8rem] px-4 hover:bg-accent hover:border-accent active:scale-[0.97] transition-[background-color,border-color,transform,opacity] duration-150",
+  "group self-end inline-flex items-center gap-2 font-mono rounded-sm text-xs font-medium tracking-[0.13em] uppercase text-paper bg-ink border border-ink whitespace-nowrap cursor-pointer py-[0.8rem] px-4 hover:bg-accent hover:border-accent active:scale-[0.97] transition-[background-color,border-color,transform,opacity] duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
   className,
 ]
   .filter(Boolean)
@@ -30,7 +30,7 @@ const btnClass = [
     <a href={href} class={btnClass} {...rest}>
       <slot />
       {arrow && (
-        <span class="arr inline-block transition-transform duration-200 group-hover:translate-x-[3px]">
+        <span aria-hidden="true" class="arr inline-block transition-transform duration-200 group-hover:translate-x-[3px]">
           →
         </span>
       )}
@@ -39,7 +39,7 @@ const btnClass = [
     <button type={type} class={btnClass} {...rest}>
       <slot />
       {arrow && (
-        <span class="arr inline-block transition-transform duration-200 group-hover:translate-x-[3px]">
+        <span aria-hidden="true" class="arr inline-block transition-transform duration-200 group-hover:translate-x-[3px]">
           →
         </span>
       )}
