@@ -23,6 +23,8 @@ const encodedHref = charEncode(href);
 
 <a
   data-o={encodedHref}
+  role="link"
+  tabindex="0"
   class={`js-obf-link${className ? ` ${className}` : ""}`}
   set:html={encodedLabel}
 />

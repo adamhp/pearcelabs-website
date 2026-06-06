@@ -22,7 +22,7 @@ const links = [
     {
       links.map((link, i) => (
         <>
-          {i > 0 && <span class="mb-0.5 text-xl leading-0 text-accent">·</span>}
+          {i > 0 && <span class="mb-0.5 text-xl leading-0 text-accent" aria-hidden="true">·</span>}
           <a
             href={link.href}
             class="text-stone-600 uppercase transition-colors duration-200 hover:text-accent">
